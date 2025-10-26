@@ -23,6 +23,8 @@ model Zap{
   id String @id @default(uuid())
   triggerId String
   trigger Trigger?
+  actions Action[]
+  zaprun Zaprun[]
 }
 model Trigger{
   id String @id@default(uuid())
@@ -35,4 +37,29 @@ model AvailableTriggers {
   id       String @id @default(uuid())
   name     String 
   triggers Trigger[]
+}
+model Action{
+  id String @id @default(uuid())
+  zapId String
+  zap Zap @relation(fields: [zapId],references: [id])
+  actionId String
+  type AvailableAction @relation(fields: [actionId],references: [id])
+
+}
+model AvailableAction{
+  id       String @id @default(uuid())
+  name     String 
+  actions Action[]
+}
+model Zaprun{
+  id String @id @default(uuid())
+  zapid String
+  metadata Json
+  zap Zap @relation(fields: [zapid],references: [id])
+  Zaprunoutofbox Zaprunoutofbox[]
+}
+model Zaprunoutofbox{
+  id String @id @default(uuid())
+  zaprunid String
+  zaprun Zaprun @relation(fields: [zaprunid],references: [id])
 }
