@@ -1,0 +1,10 @@
+import {ReactNode} from "react"
+export const SecondaryButton = ({children,onClick,size="small"}:{
+    children:ReactNode,
+    onClick :() =>void,
+    size? : "big" | "small"
+})=>{
+    return <div onClick={onClick} className={`${size==="small"?"text-sm":"text-xl"} ${size === "small" ? "px-4 py-2":"px-8 pt-10"} bg-amber-700 text-white hover:shadow-md cursor-pointer`}>
+           {children}
+    </div>
+    }
