@@ -1,12 +1,12 @@
 "use client"
 import { useRouter } from "next/navigation"
-import { LinkButton } from "./LinkButton"
-import { PrimaryButton } from "./PrimaryButton"
+import { LinkButton } from "./Buttons/LinkButton"
+import { PrimaryButton } from "./Buttons/PrimaryButton"
 
 export const AppBar = ()=>{
     const router = useRouter()
     return <div className="flex border-b justify-between p-4">
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-center font-bold">
             Zapier
         </div>
         <div className="flex">
@@ -14,11 +14,11 @@ export const AppBar = ()=>{
             <LinkButton onClick={()=>{}}>Contact Sales</LinkButton></div>
             <div className="pr-4">
             <LinkButton onClick={()=>{
-                router.push("/Login")
+                router.push("/login")
             }}>Login</LinkButton></div>
             <div className="pr-4">
             <PrimaryButton onClick={()=>{
-                router.push("/Signup")
+                router.push("/signup")
             }}>Signup</PrimaryButton>
             </div>
         </div>
